@@ -347,6 +347,21 @@ public class RNSendIntentModule extends ReactContextBaseJavaModule {
         });
       }
     }
+    @ReactMethod
+    public void customTextEvent(String title, String actionName) {
+        Intent sendIntent = new Intent(actionName);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, title);
+        sendIntent.setType(type);
+        sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //Check that an app exists to receive the intent
+        if (sendIntent.resolveActivity(this.reactContext.getPackageManager()) != null) {
+            this.reactContext.runOnUiQueueThread(new Runnable(){
+                public void run(){
+                    reactContext.startActivity(sendIntent);
+                }
+            });
+        }
+    }
 
     @ReactMethod
     public void sendTextWithTitle(final String title, String text, String type) {

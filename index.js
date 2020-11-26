@@ -123,6 +123,9 @@ var SendIntentAndroid = {
     showIgnoreBatteryOptimizationsSettings() {
         RNSendIntentAndroid.showIgnoreBatteryOptimizationsSettings();
     },
+    customTextEvent(title, actionName) {
+        RNSendIntentAndroid.customTextEvent(title, actionName);
+    },
 };
 
 module.exports = SendIntentAndroid;
