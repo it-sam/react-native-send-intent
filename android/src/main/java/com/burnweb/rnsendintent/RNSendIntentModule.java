@@ -349,7 +349,7 @@ public class RNSendIntentModule extends ReactContextBaseJavaModule {
     }
     @ReactMethod
     public void customTextEvent(String title, String actionName) {
-        Intent sendIntent = new Intent(actionName);
+        final Intent sendIntent = new Intent(actionName);
         sendIntent.putExtra(Intent.EXTRA_TEXT, title);
         sendIntent.setType("text/plain");
         sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
